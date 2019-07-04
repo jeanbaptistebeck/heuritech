@@ -1,10 +1,57 @@
 body {
-  font-family: Helvetica;
+  font-family: 'Roboto', sans-serif;
+}
+.sidebar-wrapper {
+  margin-top: 30px;
 }
 
-#root {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.row {
+  margin-right: 0;
+  margin-left: 0;
 }
+.sidebar {
+  text-align: center;
+  height: calc(100vh - 56px);
+  .buttons {
+    .btn {
+      margin-top: 10px;
+    }
+  }
+}
+.bold {
+  font-weight: bold;
+}
+.grey {
+  color: grey;
+}
+.myProgress {
+  width: 100%;
+  background-color: grey;
+  bottom: 0;
+  position: absolute;
+}
+.myBar {
+  height: 20px;
+  background-color: green;
+  transition: width .2s ease-in;
+}
+.image-wrapper {
+  padding: 0;
+  position: relative;
+}
+.picture-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 76px);
+  min-height: 600px;
+}
+.picture {
+  max-width: 500px;
+  max-height: 500px;
+}
+.spacer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
