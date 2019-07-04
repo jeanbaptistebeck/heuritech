@@ -80,7 +80,7 @@ class App extends React.Component {
     return(
       <div className="app">
         <nav className="navbar navbar-dark bg-dark">
-          <a className="navbar-brand" href="/">Heuritech Tagging Platform</a>
+          <a className="navbar-brand" href="#">Heuritech Tagging Platform</a>
         </nav>
         <div className="row">
           <div className="col-9 image-wrapper">
