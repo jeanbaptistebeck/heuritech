@@ -13,7 +13,8 @@ class App extends React.Component {
     this.state = {
       progress: 1,
       picture: null,
-      pictures: []
+      pictures: [],
+      frame: 'white'
     };
   }
 
@@ -29,13 +30,24 @@ class App extends React.Component {
   }
 
   handleKeyUp = e => {
-    if ((e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) && this.state.progress < this.state.length) {
-      this.setState({
-        progress: this.state.progress + 1,
-        picture: this.state.pictures[this.state.progress]
-      });
+    if (this.state.progress < this.state.length) {
+      if (e.keyCode === 38) { this.setState({frame: 'green'}) }
+      if (e.keyCode === 39) {
+        this.setState({
+          progress: this.state.progress + 1,
+          picture: this.state.pictures[this.state.progress]
+        });
+      }
+      if (e.keyCode === 40) { this.setState({frame: 'red'}) }
+      if (e.keyCode === 38 || e.keyCode === 40) {
+        setTimeout(() => this.setState({
+          progress: this.state.progress + 1,
+          picture: this.state.pictures[this.state.progress],
+          frame: 'white'
+        }), 500);
+      }
     }
-    else if (e.keyCode == 37 && this.state.progress > 1) {
+    if (e.keyCode == 37 && this.state.progress > 1) {
       this.setState({
         progress: this.state.progress - 1,
         picture: this.state.pictures[this.state.progress - 2]
@@ -47,16 +59,16 @@ class App extends React.Component {
     if (this.state.progress < this.state.length) {
       switch(value) {
         case 'Yes':
-          // API call
+          this.setState({frame: 'green'})
           break;
         case 'No':
-          // API call
+          this.setState({frame: 'red'})
           break;
         case 'I Don\'t Know':
-          // API call
+          this.setState({frame: 'yellow'})
           break;
       }
-      this.setState({ progress: this.state.progress + 1, picture: this.state.pictures[this.state.progress] });
+      setTimeout(() => this.setState({ progress: this.state.progress + 1, picture: this.state.pictures[this.state.progress], frame: 'white' }), 500);
     }
   }
 
@@ -68,7 +80,9 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-9 image-wrapper">
-            <Picture picture={this.state.picture} key={this.state.picture ? this.state.picture.src : null} />
+            <div ref={(ref) => { this.picture_frame=ref }}>
+              <Picture picture={this.state.picture} key={this.state.picture ? this.state.picture.src : null} frame={this.state.frame} />
+            </div>
             <ProgressBar progress={this.state.progress} length={this.state.length} />
           </div>
           <div className="sidebar col-3 bg-light">

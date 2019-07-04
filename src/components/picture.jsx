@@ -4,13 +4,13 @@ class Picture extends React.Component {
   componentDidMount() {
     if (this.props.picture) {
       this.props.picture.classList.add("picture")
-      this.componentRef.appendChild(this.props.picture)
+      this.picture_box.appendChild(this.props.picture)
     }
   }
 
   render() {
     return(
-      <div className='picture-box' ref={(DOMNodeRef) => { this.componentRef=DOMNodeRef }}>
+      <div className={`picture-box ${this.props.frame}-frame`} ref={(ref) => { this.picture_box=ref }}>
       </div>
     );
   }
