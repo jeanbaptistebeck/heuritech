@@ -21,11 +21,11 @@ class App extends React.Component {
   componentDidMount() {
     document.addEventListener('keyup', this.handleKeyUp);
     let pictures = [];
-    for (let i = 0; i < pictures_urls.length; i++) {
-        let img = new Image();
-        img.src = pictures_urls[i];
-        pictures.push(img);
-    }
+    pictures_urls.forEach(function(src) {
+      let img = new Image();
+      img.src = src;
+      pictures.push(img);
+    });
     this.setState({picture: pictures[0], pictures: pictures, length: pictures_urls.length})
   }
 
@@ -68,7 +68,11 @@ class App extends React.Component {
           this.setState({frame: 'yellow'})
           break;
       }
-      setTimeout(() => this.setState({ progress: this.state.progress + 1, picture: this.state.pictures[this.state.progress], frame: 'white' }), 500);
+      setTimeout(() => this.setState({
+        progress: this.state.progress + 1,
+        picture: this.state.pictures[this.state.progress],
+        frame: 'white'
+      }), 500);
     }
   }
 
@@ -81,12 +85,20 @@ class App extends React.Component {
         <div className="row">
           <div className="col-9 image-wrapper">
             <div ref={(ref) => { this.picture_frame=ref }}>
-              <Picture picture={this.state.picture} key={this.state.picture ? this.state.picture.src : null} frame={this.state.frame} />
+              <Picture
+                picture={this.state.picture}
+                key={this.state.picture ? this.state.picture.src : null}
+                frame={this.state.frame}
+              />
             </div>
             <ProgressBar progress={this.state.progress} length={this.state.length} />
           </div>
           <div className="sidebar col-3 bg-light">
-            <Sidebar progress={this.state.progress} length={this.state.length} handleClick={this.handleClick}/>
+            <Sidebar
+              progress={this.state.progress}
+              length={this.state.length}
+              handleClick={this.handleClick}
+            />
           </div>
         </div>
       </div>

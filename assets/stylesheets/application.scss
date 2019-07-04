@@ -1,13 +1,13 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
-.sidebar-wrapper {
-  margin-top: 30px;
-}
-
 .row {
   margin-right: 0;
   margin-left: 0;
+}
+
+.sidebar-wrapper {
+  margin-top: 30px;
 }
 .sidebar {
   text-align: center;
@@ -18,12 +18,7 @@ body {
     }
   }
 }
-.bold {
-  font-weight: bold;
-}
-.grey {
-  color: grey;
-}
+
 .myProgress {
   width: 100%;
   background-color: grey;
@@ -35,6 +30,7 @@ body {
   background-color: green;
   transition: width .2s ease-in;
 }
+
 .image-wrapper {
   padding: 0;
   position: relative;
@@ -49,6 +45,13 @@ body {
 .picture {
   max-width: 500px;
   max-height: 500px;
+}
+
+.bold {
+  font-weight: bold;
+}
+.grey {
+  color: grey;
 }
 .spacer {
   margin-top: 10px;
@@ -66,5 +69,3 @@ body {
 .yellow-frame {
   border: 10px solid yellow;
 }
-
-
